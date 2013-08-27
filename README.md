@@ -1,4 +1,4 @@
 hwmonitor
 =========
 
-The hardware monitor service for Razberi 4- and 16-channel NVRs.
+The hardware monitor service for 4-channel and 16-channel Razberi NVRs.
