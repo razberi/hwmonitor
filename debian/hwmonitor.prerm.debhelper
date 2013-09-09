@@ -1,0 +1,5 @@
+# Automatically added by dh_installinit
+if [ -e "/etc/init/hwmonitor.conf" ]; then
+	invoke-rc.d hwmonitor stop || exit $?
+fi
+# End automatically added section

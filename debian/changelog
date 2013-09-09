@@ -1,0 +1,17 @@
+hwmonitor (1.0.0-3) precise; urgency=low
+
+  * Added work-around for TCP socket bug while true cause is investigated.
+
+ -- Jason O'Bryan <jason@razberi.net>  Thu, 22 Aug 2013 10:26:20 -0500
+
+hwmonitor (1.0.0-2) precise; urgency=low
+
+  * Fixed VLAN bug. Used finer-grained locking around hardware I/O to improve performance.
+
+ -- Jason O'Bryan <jason@razberi.net>  Wed, 14 Aug 2013 10:56:33 -0500
+
+hwmonitor (1.0.0-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Jason O'Bryan <jason@razberi.net>  Thu, 1 Aug 2013 11:44:27 -0500

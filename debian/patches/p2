@@ -1,0 +1,13 @@
+Index: hwmonitor-1.0.0/makefile
+===================================================================
+--- hwmonitor-1.0.0.orig/makefile	2013-08-06 02:00:42.165469851 -0500
++++ hwmonitor-1.0.0/makefile	2013-08-06 02:00:42.165469851 -0500
+@@ -1,6 +1,6 @@
+ CC=gcc
+-INCLUDE=-I/usr/local/include/libusb-1.0/ -I/usr/local/include/json-c/ -I.
+-LDLIBS=-lusb-1.0 $(shell pkg-config --libs json-c)
++INCLUDE=$(shell pkg-config --cflags libusb-1.0) $(shall pkg-config --cflags json-c) -I.
++LDLIBS=$(shell pkg-config --libs libusb-1.0) $(shell pkg-config --libs json-c)
+ CFLAGS=$(INCLUDE) -z muldefs -std=gnu99
+ 
+ # by default set dest dir to root

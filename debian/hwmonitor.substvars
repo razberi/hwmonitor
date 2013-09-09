@@ -1,0 +1,2 @@
+misc:Depends=upstart-job
+shlibs:Depends=json-c (>= 0.11-1), libc6 (>= 2.14), libusb-1.0-0 (>= 1.0.16)

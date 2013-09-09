@@ -1,0 +1,21 @@
+description "hwmonitor"
+author      "razberi.net"
+
+# used to be: start on startup
+# until we found some mounts weren't ready yet while booting:
+start on (started mountall or starting Arcus)
+stop on shutdown
+
+# Automatically Respawn:
+respawn
+#respawn limit 999999 5
+
+script
+    #logrotate -f /etc/logrotate.d/hwmonitor
+    exec stdbuf -oL /usr/local/razberi/hwmonitor 2>&1 | tai64n | tai64nlocal
+end script
+
+post-start script
+   # Optionally put a script here that will notifiy you node has (re)started
+   # /root/bin/hoptoad.sh "node.js has started!"
+end script

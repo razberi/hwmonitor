@@ -1,0 +1,14 @@
+Source: hwmonitor
+Section: devel
+Priority: extra
+Maintainer: Jason O'Bryan <jason@razberi.net>
+Build-Depends: debhelper (>= 8.0.0), libudev0, udev, json-c, libusb-1.0-0-dev
+Standards-Version: 3.9.3
+Homepage: http://www.razberi.net/
+
+Package: hwmonitor
+Architecture: any
+Depends: daemontools, ${shlibs:Depends}, ${misc:Depends}
+Description: Hardware monitor service for razberi devices.
+ This package provides hardware monitoring mechanisms for the
+ 4 channel and 16 channel Razberi NVRs.
