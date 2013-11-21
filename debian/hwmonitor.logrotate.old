@@ -1,7 +1,0 @@
-/var/log/hwmonitor.log {
-	rotate 7
-	daily
-	missingok
-	compress
-	copytruncate
-}

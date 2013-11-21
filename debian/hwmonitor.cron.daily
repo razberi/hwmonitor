@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# restart the hwmonitor service
-stop hwmonitor
-start hwmonitor
