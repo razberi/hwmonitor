@@ -1,1 +1,2 @@
 libusb-1.0 0 libusb-1.0-0 (>= 1.0.16)
+libjson-c 2 json-c (>= 0.11-1)
