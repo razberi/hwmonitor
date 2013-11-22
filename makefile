@@ -1,6 +1,6 @@
 CC=gcc
 INCLUDE=$(shell pkg-config --cflags libusb-1.0) $(shall pkg-config --cflags json-c) -I.
-LDLIBS=$(shell pkg-config --libs libusb-1.0) $(shell pkg-config --libs json-c)
+LDLIBS=$(shell pkg-config --libs libusb-1.0) $(shell pkg-config --libs json-c) -lpthread
 CFLAGS=$(INCLUDE) -z muldefs -std=gnu99
 
 # by default set dest dir to root
