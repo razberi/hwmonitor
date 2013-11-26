@@ -15,7 +15,7 @@ INSTALLDIR=$(DESTDIR)/usr/local/razberi/
 # the dist target is run so systems without git can still `make`
 REPONAME=$(shell basename `git rev-parse --show-toplevel`)
 VERSION=$(shell git describe --abbrev=0)
-
+BRANCH=master
 
 $(APPNAME): HWInterface.c HIDCP2112.c
 	$(CC) -o $@ $^ $(CFLAGS) $(LDLIBS)
@@ -35,7 +35,7 @@ install:
 
 .PHONY: dist
 dist:
-	git archive --prefix='$(REPONAME)-$(VERSION)/' -o $(REPONAME)_$(VERSION).orig.tar.gz -9 HEAD
+	git archive --prefix='$(REPONAME)-$(VERSION)/' -o $(REPONAME)_$(VERSION).orig.tar.gz -9 refs/heads/$(BRANCH)
 
 .PHONY: distclean
 distclean: clean
