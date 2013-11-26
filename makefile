@@ -1,3 +1,5 @@
+APPNAME=hwmonitor
+
 CC=gcc
 INCLUDE=$(shell pkg-config --cflags libusb-1.0) $(shall pkg-config --cflags json-c) -I.
 LDLIBS=$(shell pkg-config --libs libusb-1.0) $(shell pkg-config --libs json-c) -lpthread
@@ -8,19 +10,33 @@ CFLAGS=$(INCLUDE) -z muldefs -std=gnu99
 DESTDIR ?= ""
 INSTALLDIR=$(DESTDIR)/usr/local/razberi/
 
-hwmonitor: HWInterface.c HIDCP2112.c
+# requires git, used to make distribution source tarball
+# for creating packages with, variables are evaluated when
+# the dist target is run so systems without git can still `make`
+REPONAME=$(shell basename `git rev-parse --show-toplevel`)
+VERSION=$(shell git describe --abbrev=0)
+
+
+$(APPNAME): HWInterface.c HIDCP2112.c
 	$(CC) -o $@ $^ $(CFLAGS) $(LDLIBS)
 
 .PHONY: all
-all: hwmonitor
+all: $(APPNAME)
 
 .PHONY: clean
 clean: 
-	rm -f *.o hwmonitor
+	rm -f *.o $(APPNAME)
 
 .PHONY: install
 install:
-	# copy files to destinations
+	@# copy files to destinations
 	install -d $(INSTALLDIR)
-	cp hwmonitor $(INSTALLDIR)
+	cp $(APPNAME) $(INSTALLDIR)
 
+.PHONY: dist
+dist:
+	git archive --prefix='$(REPONAME)-$(VERSION)/' -o $(REPONAME)_$(VERSION).orig.tar.gz -9 HEAD
+
+.PHONY: distclean
+distclean: clean
+	rm -f *.orig.tar.gz
