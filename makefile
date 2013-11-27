@@ -14,7 +14,7 @@ INSTALLDIR=$(DESTDIR)/usr/local/razberi/
 # for creating packages with, variables are evaluated when
 # the dist target is run so systems without git can still `make`
 REPONAME=$(shell basename `git rev-parse --show-toplevel`)
-VERSION=$(shell git describe --abbrev=0)
+VERSION=$(shell git describe --abbrev=0 | sed s/^v//)
 BRANCH=master
 
 $(APPNAME): HWInterface.c HIDCP2112.c
